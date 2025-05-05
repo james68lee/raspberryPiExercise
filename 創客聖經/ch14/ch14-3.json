@@ -1,0 +1,174 @@
+[
+    {
+        "id": "75fbf592.1bde7c",
+        "type": "debug",
+        "z": "26372e01171177fa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "90d9565a.3b5ea8",
+        "type": "annotate-image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "fill": "",
+        "stroke": "#ffC000",
+        "lineWidth": 5,
+        "fontSize": 24,
+        "fontColor": "#ffC000",
+        "x": 380,
+        "y": 200,
+        "wires": [
+            [
+                "41310ea.ac8f9f"
+            ]
+        ]
+    },
+    {
+        "id": "5ba6bcfb.2d12b4",
+        "type": "fileinject",
+        "z": "26372e01171177fa",
+        "name": "Selected Image",
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "6430f7bf.a43368",
+                "4479422e.894c4c"
+            ]
+        ]
+    },
+    {
+        "id": "6430f7bf.a43368",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "width": "100",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 140,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "41310ea.ac8f9f",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "Annotated image",
+        "width": "200",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 590,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "fbe4136b.5d332",
+        "type": "function",
+        "z": "26372e01171177fa",
+        "name": "Annotations",
+        "func": "msg.annotations = []\nfor (i = 0; i < msg.payload.length; i++) {\n    var obj = {}\n    obj.label = msg.payload[i].class;\n    obj.bbox = msg.payload[i].bbox;\n    msg.annotations[i] = obj;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "c878839e.3ac13"
+            ]
+        ]
+    },
+    {
+        "id": "4479422e.894c4c",
+        "type": "change",
+        "z": "26372e01171177fa",
+        "name": "Save to flow.image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "image",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "294b870c9ea80055"
+            ]
+        ]
+    },
+    {
+        "id": "c878839e.3ac13",
+        "type": "change",
+        "z": "26372e01171177fa",
+        "name": "Read from flow.image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "image",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 140,
+        "wires": [
+            [
+                "90d9565a.3b5ea8"
+            ]
+        ]
+    },
+    {
+        "id": "294b870c9ea80055",
+        "type": "tensorflowCoco",
+        "z": "26372e01171177fa",
+        "name": "",
+        "modelUrl": "http://127.0.0.1:1880/coco/model.json",
+        "scoreThreshold": 0.5,
+        "passthru": "false",
+        "lineColour": "magenta",
+        "x": 530,
+        "y": 60,
+        "wires": [
+            [
+                "75fbf592.1bde7c",
+                "fbe4136b.5d332"
+            ]
+        ]
+    }
+]

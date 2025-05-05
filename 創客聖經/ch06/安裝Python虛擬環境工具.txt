@@ -1,0 +1,31 @@
+# 取得 Python 版本
+
+$ python3 --version
+
+# 取得 Python 直譯器的路徑
+
+$ which python 3.11
+
+# 合位路徑至環境變數 VIRTUALENVWRAPPER_PYTHON=/user/bin/python
+
+$ echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python" >> ~/.bashrc
+$ source ~/.bashrc
+
+# 更新套件資料庫和升級已安裝套件
+
+$ sudo apt update
+$ sudo apt upgrade -y
+
+# 安裝virtualenv和virtualenvwrapper套件
+
+$ sudo apt install -y python3-virtualenv
+$ sudo apt install -y python3-virtualenvwrapper
+
+# 設定環境變數WORKON_HOME
+
+$ echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
+
+# 自動執行virtualenvwrapper.sh腳本
+
+$ echo "source /usr/share/virtualenvwrapper/virtualenvwrapper.sh" >> ~/.bashrc
+$ source ~/.bashrc

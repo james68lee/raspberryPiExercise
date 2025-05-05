@@ -1,0 +1,3 @@
+https://github.com/dctian/DeepPiCar
+
+(包含用來訓練深度學習模型的 Jupyter notebook 檔 (.ipynb))

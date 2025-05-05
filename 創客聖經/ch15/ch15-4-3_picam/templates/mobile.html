@@ -1,0 +1,52 @@
+<!DOCTYPE html>   
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pi Car</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+function callback(value, status) {
+    if (status == "success") {
+        $('#output').text(value);
+    }
+    else
+       $('#output').text("Error!");   
+}
+
+$(document).ready(function() {
+    $('#output').text("Ready...");
+    $("#control").delegate("a", "click", function () {
+       $.get('/' + $(this).attr('id'), callback);
+    });
+});
+</script>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header">
+    <h1>Video Streaming</h1>
+  </div>
+  <div data-role="main" class="ui-content"> 
+    <img src="{{ url_for('video_feed') }}">
+    <div id="control">     
+      <div class="ui-grid-b">
+        <div class="ui-block-a"><span></span></div>
+        <div class="ui-block-b"><span><a id="f" class="ui-btn">Forward</a></span></div>
+        <div class="ui-block-c"><span></span></div>
+        <div class="ui-block-a"><span><a id="l" class="ui-btn">Left</a></span></div>
+        <div class="ui-block-b"><span><a id="s" class="ui-btn">Stop</a></span></div>
+        <div class="ui-block-c"><span><a id="r" class="ui-btn">Right</a></span></div>
+        <div class="ui-block-a"><span></span></div>
+        <div class="ui-block-b"><span><a id="b" class="ui-btn">Back</a></span></div>
+        <div class="ui-block-c"><span></span></div>
+      </div>
+    </div>
+  </div>
+  <div data-role="footer">
+    <h1><span id="output"></span></h1>
+  </div>
+</div>
+</body>
+</html> 

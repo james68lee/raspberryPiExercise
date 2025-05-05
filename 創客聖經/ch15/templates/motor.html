@@ -1,0 +1,38 @@
+<!DOCTYPE html>  
+<html>
+<head>
+<title>{{ title }}</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<script>
+function motor(cmd) {
+    window.location.href='/' + cmd  
+}
+</script>
+</head>
+<body>
+<h1>Web Interface Motor Control</h1>
+<h2>Status: {{ status }}</h2>
+<table>
+<tr>
+  <td> </td>
+  <td align="center">
+    <input type="button" onClick="motor('f')" value=" Forward "/>
+  </td>
+  <td> </td>
+</tr>
+<tr>
+  <td><input type="button" onClick="motor('l')" value=" Left "/></td>
+  <td align="center">
+    <input type="button" onClick="motor('s')" value=" Stop "/>
+  </td>
+  <td><input type="button" onClick="motor('r')" value=" Right "/></td>
+</tr>
+<tr>
+  <td> </td>
+  <td align="center">
+    <input type="button" onClick="motor('b')" value=" Backward "/></td>
+  <td> </td>
+</tr>
+</table>
+</body>
+</html>

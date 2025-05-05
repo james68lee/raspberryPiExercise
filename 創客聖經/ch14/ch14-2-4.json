@@ -1,0 +1,60 @@
+[
+    {
+        "id": "1a0ba95970826c5f",
+        "type": "ui_webcam",
+        "z": "26372e01171177fa",
+        "name": "",
+        "group": "e25fa5ee0776607e",
+        "order": 0,
+        "width": "8",
+        "height": "6",
+        "countdown": false,
+        "autoStart": false,
+        "hideCaptureButton": false,
+        "showImage": "2",
+        "mirror": true,
+        "format": "png",
+        "x": 160,
+        "y": 2080,
+        "wires": [
+            [
+                "2042a23515fde28c"
+            ]
+        ]
+    },
+    {
+        "id": "2042a23515fde28c",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 340,
+        "y": 2080,
+        "wires": []
+    },
+    {
+        "id": "e25fa5ee0776607e",
+        "type": "ui_group",
+        "name": "WebCam",
+        "tab": "5967b7da.b44598",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false
+    },
+    {
+        "id": "5967b7da.b44598",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

@@ -1,0 +1,67 @@
+[
+    {
+        "id": "8ebfda5.eff8628",
+        "type": "file in",
+        "z": "26372e01171177fa",
+        "name": "",
+        "filename": "/home/pi/ch14/images/koala.jpg",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "96811d4b.09333"
+            ]
+        ]
+    },
+    {
+        "id": "96811d4b.09333",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 400,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "298991fc.92724e",
+        "type": "inject",
+        "z": "26372e01171177fa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "8ebfda5.eff8628"
+            ]
+        ]
+    }
+]

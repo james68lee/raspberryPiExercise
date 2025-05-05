@@ -1,0 +1,129 @@
+[
+    {
+        "id": "79498c72.509684",
+        "type": "inject",
+        "z": "26372e01171177fa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 840,
+        "wires": [
+            [
+                "b8f03989.caaa98"
+            ]
+        ]
+    },
+    {
+        "id": "b8f03989.caaa98",
+        "type": "file in",
+        "z": "26372e01171177fa",
+        "name": "",
+        "filename": "/home/pi/ch14/images/cat.jpg",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 420,
+        "y": 840,
+        "wires": [
+            [
+                "72056dc6.e8a7e4",
+                "80003217.5adbf"
+            ]
+        ]
+    },
+    {
+        "id": "72056dc6.e8a7e4",
+        "type": "change",
+        "z": "26372e01171177fa",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "annotations",
+                "pt": "msg",
+                "to": "[{\"label\":\"cat\",\"bbox\":[4.735950767993927,27.59294629096985,330.78828209638596,242.19613552093506],\"labelLocation\":\"top\"}]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 900,
+        "wires": [
+            [
+                "74455cdd.616384"
+            ]
+        ]
+    },
+    {
+        "id": "74455cdd.616384",
+        "type": "annotate-image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "fill": "",
+        "stroke": "#ffC000",
+        "lineWidth": 5,
+        "fontSize": 24,
+        "fontColor": "#ffC000",
+        "x": 420,
+        "y": 960,
+        "wires": [
+            [
+                "6a107c96.14a2a4"
+            ]
+        ]
+    },
+    {
+        "id": "6a107c96.14a2a4",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "width": "300",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 660,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "80003217.5adbf",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 200,
+        "y": 900,
+        "wires": []
+    }
+]

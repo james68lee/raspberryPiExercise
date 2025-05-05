@@ -1,0 +1,202 @@
+[
+    {
+        "id": "ed008bc2.95ecb8",
+        "type": "image",
+        "z": "33e486408c05d9d2",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 120,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "349efc0c.d02b54",
+        "type": "ui_webcam",
+        "z": "33e486408c05d9d2",
+        "name": "Webcam",
+        "group": "5ecf1e5d.c16c4",
+        "order": 1,
+        "width": "8",
+        "height": "7",
+        "countdown": false,
+        "autoStart": false,
+        "hideCaptureButton": false,
+        "showImage": -1,
+        "mirror": true,
+        "format": "jpeg",
+        "x": 80,
+        "y": 60,
+        "wires": [
+            [
+                "584bf889.98c078",
+                "ed008bc2.95ecb8"
+            ]
+        ]
+    },
+    {
+        "id": "747112e6.fa25ec",
+        "type": "tensorflowCoco",
+        "z": "33e486408c05d9d2",
+        "name": "",
+        "modelUrl": "http://localhost:1880/coco/model.json",
+        "scoreThreshold": 0.5,
+        "passthru": "false",
+        "lineColour": "magenta",
+        "x": 470,
+        "y": 60,
+        "wires": [
+            [
+                "68426251.f3173c",
+                "8b579c55.70de8"
+            ]
+        ]
+    },
+    {
+        "id": "68426251.f3173c",
+        "type": "debug",
+        "z": "33e486408c05d9d2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "584bf889.98c078",
+        "type": "change",
+        "z": "33e486408c05d9d2",
+        "name": "Save to flow.image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "image",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 60,
+        "wires": [
+            [
+                "747112e6.fa25ec"
+            ]
+        ]
+    },
+    {
+        "id": "c4d325e9.f07b18",
+        "type": "change",
+        "z": "33e486408c05d9d2",
+        "name": "Read from flow.image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "image",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "446c11b2.a4994"
+            ]
+        ]
+    },
+    {
+        "id": "446c11b2.a4994",
+        "type": "annotate-image",
+        "z": "33e486408c05d9d2",
+        "name": "",
+        "fill": "",
+        "stroke": "#ffC000",
+        "lineWidth": 5,
+        "fontSize": 24,
+        "fontColor": "#ffC000",
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "4bdd0180.1f316"
+            ]
+        ]
+    },
+    {
+        "id": "8b579c55.70de8",
+        "type": "function",
+        "z": "33e486408c05d9d2",
+        "name": "Annotations",
+        "func": "msg.annotations = []\nfor (i = 0; i < msg.payload.length; i++) {\n    var obj = {}\n    obj.label = msg.payload[i].class;\n    obj.bbox = msg.payload[i].bbox;\n    msg.annotations[i] = obj;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "c4d325e9.f07b18"
+            ]
+        ]
+    },
+    {
+        "id": "4bdd0180.1f316",
+        "type": "image",
+        "z": "33e486408c05d9d2",
+        "name": "Annotated image",
+        "width": "200",
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 610,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5ecf1e5d.c16c4",
+        "type": "ui_group",
+        "name": "WebCam",
+        "tab": "5967b7da.b44598",
+        "order": 1,
+        "disp": true,
+        "width": "10",
+        "collapse": false
+    },
+    {
+        "id": "5967b7da.b44598",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

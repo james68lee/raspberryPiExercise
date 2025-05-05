@@ -1,0 +1,55 @@
+[
+    {
+        "id": "26372e01171177fa",
+        "type": "tab",
+        "label": "流程1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8f0fae918d1c677e",
+        "type": "inject",
+        "z": "26372e01171177fa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello World!",
+        "payloadType": "str",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "d469cd2be7741218"
+            ]
+        ]
+    },
+    {
+        "id": "d469cd2be7741218",
+        "type": "debug",
+        "z": "26372e01171177fa",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 180,
+        "wires": []
+    }
+]

@@ -1,0 +1,32 @@
+# Miniforge、Anaconda和Miniconda系出同源，都是使用Conda的開源Python套件和虛擬環境管理系統。
+# 在安裝前我們需要更新套件資料庫和升級已安裝套件
+sudo apt update
+sudo apt upgrade -y
+# 步驟一: 取得 Miniforge 安裝檔案
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh -O ~/miniforge.sh
+# 步驟二: 安裝 Miniforge
+bash ~/Miniforge3-Linux-aarch64.sh -b -p ~/miniforge
+# 步驟三: 刪除安裝檔案
+# rm ~/Miniforge3-Linux-aarch64.sh
+# 步驟四: 新增 PATH 搜尋路徑
+echo "PATH=$PATH:$HOME/miniforge/bin" >> .bashrc
+source .bashrc
+# 步驟五: 查詢Conda版本
+conda --version
+
+# 使用 Conda建立, 啟動, 關閉和刪除Python虛擬環境
+# 請先初始 Conda
+conda init
+# 建立虛擬環境
+conda create -n test python=3.11.2 -y
+# 顯示虛擬環境清單
+conda env list
+# 啟動虛擬環境
+conda activate test
+# 關閉虛擬環境
+conda deactivate
+# 刪除虛擬環境
+conda env remove -n test
+
+
+

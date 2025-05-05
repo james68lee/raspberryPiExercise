@@ -1,0 +1,78 @@
+[
+    {
+        "id": "91226c69.8a45e",
+        "type": "inject",
+        "z": "42603b00473e85b3",
+        "name": "On",
+        "props": [
+            {
+                "p": "payload",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "str",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "16e58c64.28fd04"
+            ]
+        ]
+    },
+    {
+        "id": "f98ea726.42abc8",
+        "type": "inject",
+        "z": "42603b00473e85b3",
+        "name": "Off",
+        "props": [
+            {
+                "p": "payload",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 172,
+        "y": 175,
+        "wires": [
+            [
+                "16e58c64.28fd04"
+            ]
+        ]
+    },
+    {
+        "id": "16e58c64.28fd04",
+        "type": "rpi-gpio out",
+        "z": "42603b00473e85b3",
+        "name": "RED LED",
+        "pin": "18",
+        "set": true,
+        "level": "0",
+        "out": "out",
+        "bcm": true,
+        "x": 423,
+        "y": 124,
+        "wires": []
+    }
+]

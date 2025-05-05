@@ -1,0 +1,19 @@
+<!DOCTYPE html>  
+<html>
+<head>
+<title>{{ title }}</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<script>
+function changed(led) {
+    window.location.href='/' + led  
+}
+</script>
+</head>
+<body>
+<h1>Web Interface GPIO Control</h1>
+<h2>LED 0: {{ LED0 }}</h2>
+<h2>LED 1: {{ LED1 }}</h2>
+<input type='button' onClick='changed(0)' value='LED 0'/> | 
+<input type='button' onClick='changed(1)' value='LED 1'/>
+</body>
+</html> 

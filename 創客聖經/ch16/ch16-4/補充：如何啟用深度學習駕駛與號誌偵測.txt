@@ -1,0 +1,28 @@
+(小編補充)
+
+自走車主程式 deep_pi_car.py 和 deep_pi_car_picam.py 預設會使用 hand_coded_lane_follower.py 
+的道路偵測功能，也就是即時用 OpenCV 描出特定顏色之道路邊線的角度，
+不過你也可以啟用 16-4-3 節中提到的 DeepPiCar 專案的深度學習模型 (可偵測藍線或明亮環境下的黑線)：
+
+將 deep_pi_car.py 中的第 26~28 行, deep_pi_car_picam.py 是第29~31行, 
+
+       self.lane_follower = HandCodedLaneFollower(self)
+       #from end_to_end_lane_follower import EndToEndLaneFollower
+       #self.lane_follower = EndToEndLaneFollower(self)
+
+改成
+
+       #self.lane_follower = HandCodedLaneFollower(self)
+       from end_to_end_lane_follower import EndToEndLaneFollower
+       self.lane_follower = EndToEndLaneFollower(self)
+
+然後存檔。
+現在 deep_pi_car.py 和 deep_pi_car_picam.py 就會轉而使用 end_to_end_lane_follower.py 內的深度學習模型了。
+
+
+若想啟用 16-4-4 節提到的障礙物與交通號誌偵測模型，可將 deep_pi_car.py 的第 94~96 行, deep_pi_car_picam.py 
+的第 99~101 行前面的井字號刪掉：
+
+        #    image_objs = self.process_objects_on_road(image_objs)
+        #    self.video_objs.write(image_objs)
+        #    show_image('Detected Objects', image_objs)

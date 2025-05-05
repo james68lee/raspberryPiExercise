@@ -1,0 +1,2 @@
+$ cd ch10
+$ wget -P yolo https://pjreddie.com/media/files/yolov3.weights

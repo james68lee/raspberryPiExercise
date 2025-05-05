@@ -1,0 +1,49 @@
+[
+    {
+        "id": "711d5cdb.db0f14",
+        "type": "fileinject",
+        "z": "26372e01171177fa",
+        "name": "",
+        "x": 220,
+        "y": 1380,
+        "wires": [
+            [
+                "2fde1552.6ca45a",
+                "ed008bc2.95ecb8"
+            ]
+        ]
+    },
+    {
+        "id": "2fde1552.6ca45a",
+        "type": "debug",
+        "z": "26372e01171177fa",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "ed008bc2.95ecb8",
+        "type": "image",
+        "z": "26372e01171177fa",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 390,
+        "y": 1420,
+        "wires": []
+    }
+]
